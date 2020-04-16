@@ -1,24 +1,25 @@
 # Test Site
 
-Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
+$pip = Get-AzPublicIPAddress -ResourceGroupName myResourceGroup4AG -Name myAGPublicIPAddress
+
 
 #should be blocked
-curl 1.1.1.1/globalBlock
-curl 1.1.1.1/?1=1
+curl 52.152.247.9/globalBlock
+curl 52.152.247.9/?1=1
 
 #should be allowed
-curl 1.1.1.1/globalAllow?1=1
+curl 52.152.247.9/globalAllow?1=1
 
 #should be blocked
-curl 1.1.1.1:8080/siteBlock
-curl 1.1.1.1/?1=1
+curl 52.152.247.9:8080/siteBlock
+curl 52.152.247.9/?1=1
 
 #should be allowed
-curl 1.1.1.1:8080/siteAllow?1=1
+curl 52.152.247.9:8080/siteAllow?1=1
 
 #should be blocked
-curl 1.1.1.1/URIBlock
-curl 1.1.1.1/?1=1
+curl 52.152.247.9/URIBlock
+curl 52.152.247.9/?1=1
 
 #should be allowed
-curl 1.1.1.1/URIAllow?1=1
+curl 52.152.247.9/URIAllow?1=1

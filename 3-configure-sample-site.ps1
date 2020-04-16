@@ -3,7 +3,7 @@ $publicSettings = @{ "fileUris" = (, "https://raw.githubusercontent.com/Azure/az
     "commandToExecute"          = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" 
 }
 
-$vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
+$vmss = Get-AzVmss -ResourceGroupName myResourceGroup4AG -VMScaleSetName myvmss
 
 Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
     -Name "customScript" `
@@ -13,24 +13,24 @@ Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
     -Setting $publicSettings
 
 Update-AzVmss `
-    -ResourceGroupName myResourceGroupAG `
+    -ResourceGroupName myResourceGroup4AG `
     -Name myvmss `
     -VirtualMachineScaleSet $vmss
 
 # Create Storage Acct
 $storageAccount = New-AzStorageAccount `
-    -ResourceGroupName myResourceGroupAG `
+    -ResourceGroupName myResourceGroup4AG `
     -Name myagstore1 `
     -Location eastus `
     -SkuName "Standard_LRS"
 
 # Configure Diagnostics
 $appgw = Get-AzApplicationGateway `
-    -ResourceGroupName myResourceGroupAG `
+    -ResourceGroupName myResourceGroup4AG `
     -Name myAppGateway
 
 $store = Get-AzStorageAccount `
-    -ResourceGroupName myResourceGroupAG `
+    -ResourceGroupName myResourceGroup4AG `
     -Name myagstore1
 
 Set-AzDiagnosticSetting `
